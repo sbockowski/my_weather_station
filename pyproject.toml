@@ -1,0 +1,13 @@
+[project]
+name = "my-weather-station"
+version = "0.1.0"
+description = "Monorepo for weather station"
+readme = "README.md"
+authors = [
+    { name = "Szymon Boćkowski", email = "sbockowskix@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["web_app", "sensor_agent"]
