@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Czas</th>
+            <th>Temperatura (°C)</th>
+            <th>Wilgotność (%)</th>
+            <th>Ciśnienie (hPa)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in measurements %}
+        <tr>
+            <td>{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</td>
+            <td><strong>{{ m.temperature }}</strong></td>
+            <td>{{ m.humidity }}</td>
+            <td>{{ m.pressure }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" style="text-align: center;">Brak pomiarów w bazie danych.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
