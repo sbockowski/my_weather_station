@@ -3,6 +3,8 @@ name = "sensor-agent"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
+    "adafruit-circuitpython-bme280>=2.6.32",
+    "httpx>=0.28.1",
     "requests>=2.34.2",
     "smbus2>=0.6.1",
 ]
