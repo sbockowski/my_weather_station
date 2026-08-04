@@ -2,8 +2,8 @@ from sqlmodel import select, Session
 
 from contextlib import asynccontextmanager
 from fastapi import Depends, FastAPI
-from web_app.app.database import create_db_and_tables, get_session
-from web_app.app.models import Measurement
+from app.database import create_db_and_tables, get_session
+from app.models import Measurement
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
