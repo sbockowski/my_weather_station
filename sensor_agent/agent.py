@@ -2,9 +2,7 @@ import time
 import board
 from adafruit_bme280 import basic as adafruit_bme280
 import httpx
-
-API_URL = "http://127.0.0.1:8000/api/v1/measurements"
-INTERVAL_SECONDS = 60
+from config import settings
 
 
 def init_bme280():
@@ -39,7 +37,7 @@ def main():
                     "pressure": pressure,
                 }
 
-                response = client.post(API_URL, json=payload)
+                response = client.post(str(settings.api_url), json=payload)
                 response.raise_for_status()
 
                 print(f"Measurement sent: T={temperature}°C, H={humidity}%, P={pressure}hPa")
@@ -51,7 +49,7 @@ def main():
             except Exception as e:
                 print(f"Unexpected sensor reading error: {e}")
 
-            time.sleep(INTERVAL_SECONDS)
+            time.sleep(settings.interval_seconds)
 
 
 if __name__ == "__main__":
