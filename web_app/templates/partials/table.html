@@ -1,22 +1,22 @@
 <div class="content">
-    {% for m in measurements %}
-    <div class="header">{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</div>
+    {% if measurements %}
+    <div class="header">{{ measurements.timestamp.strftime('%Y-%m-%d %H:%M:%S') if measurements.timestamp else '-' }}</div>
     <div class="main-sensor">
-        <span class="temperature" id="temp">{{ m.temperature }}</span>
+        <span class="temperature" id="temp">{{ measurements.temperature }}</span>
         <span class="unit">°C</span>
     </div>
 
     <div class="details">
         <div class="detail-item">
             <label>Wilgotność</label>
-            <value id="hum">{{ m.humidity }}</value><span style="font-size: 1.5rem; color: #aaa;">%</span>
+            <value id="hum">{{ measurements.humidity }}</value><span style="font-size: 1.5rem; color: #aaa;">%</span>
         </div>
         <div class="detail-item">
             <label>Ciśnienie</label>
-            <value id="press">{{ m.pressure }}</value><span style="font-size: 1.5rem; color: #aaa;"> hPa</span>
+            <value id="press">{{ measurements.pressure }}</value><span style="font-size: 1.5rem; color: #aaa;"> hPa</span>
         </div>
     </div>
     {% else %}
         Brak pomiarów w bazie danych.
-    {% endfor %}
+    {% endif %}
 </div>

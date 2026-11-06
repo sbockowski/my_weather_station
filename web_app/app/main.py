@@ -30,18 +30,18 @@ def index_view(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
 
 
-@app.get("/partials/measurements", response_class=HTMLResponse)
+@app.get("/partials/measurement", response_class=HTMLResponse)
 def partial_measurements_view(
     request: Request,
     session: Session = Depends(get_session),
 ):
-    statement = select(Measurement).order_by(Measurement.id.desc()).limit(15)
-    measurements = session.exec(statement).all()
+    statement = select(Measurement).order_by(Measurement.id.desc()).limit(1)
+    latest_measurements = session.exec(statement).first()
 
     return templates.TemplateResponse(
         request=request,
         name="partials/table.html",
-        context={"measurements": measurements},
+        context={"measurements": latest_measurements},
     )
 
 
