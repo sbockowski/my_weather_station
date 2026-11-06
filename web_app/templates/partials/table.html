@@ -1,6 +1,6 @@
 <div class="content">
-    <div class="header">{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</div>
     {% for m in measurements %}
+    <div class="header">{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</div>
     <div class="main-sensor">
         <span class="temperature" id="temp">{{ m.temperature }}</span>
         <span class="unit">°C</span>
