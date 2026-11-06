@@ -1,19 +1,19 @@
 <div class="content">
-    {% if measurements %}
-    <div class="header">{{ measurements.timestamp.strftime('%Y-%m-%d %H:%M:%S') if measurements.timestamp else '-' }}</div>
+    {% if measurement %}
+    <div class="header">{{ measurement.timestamp.strftime('%Y-%m-%d %H:%M:%S') if measurement.timestamp else '-' }}</div>
     <div class="main-sensor">
-        <span class="temperature" id="temp">{{ measurements.temperature }}</span>
+        <span class="temperature" id="temp">{{ measurement.temperature }}</span>
         <span class="unit">°C</span>
     </div>
 
     <div class="details">
         <div class="detail-item">
             <label>Wilgotność</label>
-            <value id="hum">{{ measurements.humidity }}</value><span style="font-size: 1.5rem; color: #aaa;">%</span>
+            <value id="hum">{{ measurement.humidity }}</value><span style="font-size: 1.5rem; color: #aaa;">%</span>
         </div>
         <div class="detail-item">
             <label>Ciśnienie</label>
-            <value id="press">{{ measurements.pressure }}</value><span style="font-size: 1.5rem; color: #aaa;"> hPa</span>
+            <value id="press">{{ measurement.pressure }}</value><span style="font-size: 1.5rem; color: #aaa;"> hPa</span>
         </div>
     </div>
     {% else %}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
 </head>
 <body>
-    <div hx-get="/partials/measurements" 
+    <div hx-get="/partials/measurement" 
          hx-trigger="load, every 5s" 
          hx-target="#measurements-table">
         <div id="measurements-table">

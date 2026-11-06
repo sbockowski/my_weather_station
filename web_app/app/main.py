@@ -36,12 +36,12 @@ def partial_measurements_view(
     session: Session = Depends(get_session),
 ):
     statement = select(Measurement).order_by(Measurement.id.desc()).limit(1)
-    latest_measurements = session.exec(statement).first()
+    latest_measurement = session.exec(statement).first()
 
     return templates.TemplateResponse(
         request=request,
         name="partials/table.html",
-        context={"measurements": latest_measurements},
+        context={"measurement": latest_measurement},
     )
 
 
