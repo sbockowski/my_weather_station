@@ -6,8 +6,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from sqlmodel import Session, select
 
-from app.database import create_db_and_tables, get_session
-from app.models import Measurement
+from database import create_db_and_tables, get_session
+from models import Measurement
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
