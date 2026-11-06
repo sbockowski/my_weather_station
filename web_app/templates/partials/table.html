@@ -1,24 +1,22 @@
-<table>
-    <thead>
-        <tr>
-            <th>Czas</th>
-            <th>Temperatura (°C)</th>
-            <th>Wilgotność (%)</th>
-            <th>Ciśnienie (hPa)</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for m in measurements %}
-        <tr>
-            <td>{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</td>
-            <td><strong>{{ m.temperature }}</strong></td>
-            <td>{{ m.humidity }}</td>
-            <td>{{ m.pressure }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4" style="text-align: center;">Brak pomiarów w bazie danych.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="content">
+    <div class="header">{{ m.timestamp.strftime('%Y-%m-%d %H:%M:%S') if m.timestamp else '-' }}</div>
+    {% for m in measurements %}
+    <div class="main-sensor">
+        <span class="temperature" id="temp">{{ m.temperature }}</span>
+        <span class="unit">°C</span>
+    </div>
+
+    <div class="details">
+        <div class="detail-item">
+            <label>Wilgotność</label>
+            <value id="hum">{{ m.humidity }}</value><span style="font-size: 1.5rem; color: #aaa;">%</span>
+        </div>
+        <div class="detail-item">
+            <label>Ciśnienie</label>
+            <value id="press">{{ m.pressure }}</value><span style="font-size: 1.5rem; color: #aaa;"> hPa</span>
+        </div>
+    </div>
+    {% else %}
+        Brak pomiarów w bazie danych.
+    {% endfor %}
+</div>
